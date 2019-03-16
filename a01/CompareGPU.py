@@ -16,19 +16,18 @@ class COMPAREGPU(webapp2.RequestHandler):
         self.response.headers['Content-Type'] = 'text/html'
         firstgpu = self.request.GET.get("GPU1")
         secondgpu = self.request.GET.get("GPU2")
-       
+        error = "GPU's name Should not be same"
+
         gpu_array = MyGpu.query()
         #if firstgpu == secondgpu:
             #error = "GPU's name Should not be same"
         user_array = MyGpu.query().fetch()
-        
+
         template_values = {
             'gpu_array' : gpu_array,
             'firstgpu' : firstgpu,
             'secondgpu' : secondgpu,
-            #'error' : error,
+            'error' : error,
             }
         template = JINJA_ENVIRONMENT.get_template('CompareGPU.html')
         self.response.write(template.render(template_values))
-        
-   
