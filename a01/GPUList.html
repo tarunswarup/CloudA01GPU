@@ -1,0 +1,92 @@
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <title> FORMGPU </title>
+  <style>
+    .button {
+      background-color: purple;
+      /* Green */
+      border: none;
+      color: white;
+      padding: 15px 32px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      font-family: verdana;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h2 align="center"><i><b>GPU</i> List </b></h3>
+    <p align="right">
+      <b> <a href="/"> Home </a> </b></p>
+
+    <form method="get">
+      <table bgcolor="#42cbf4" border="1" cellpadding="10">
+        <thead>
+          <tr>
+            <th></th>
+            <th> GPU name </th>
+            <th> Manufacturer name </th>
+            <th> Date issued </th>
+            <th> GeometryShader </th>
+            <th> TesselationShader </th>
+            <th> ShaderInt16 </th>
+            <th> SparseBinding </th>
+            <th> TextureCompressionETC2 </th>
+            <th> VertexPipelineStoresAndAtomics </th>
+          </tr>
+        </thead>
+        <tbody>
+
+          <tr>
+            <td><button class="button" type="submit">Feature Search </button></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+              <center><input type="checkbox" name="filter_geometryShader" {% if f_geometryShader %} checked {% endif %} /></center>
+            </td>
+            <td>
+              <center><input type="checkbox" name="filter_tesselationShader" {% if f_tesselationShader %} checked {% endif %} /></center>
+            </td>
+            <td>
+              <center><input type="checkbox" name="filter_shaderInt16" {% if f_shaderInt16 %} checked {% endif %} /></center>
+            </td>
+            <td>
+              <center><input type="checkbox" name="filter_sparseBinding" {% if f_sparseBinding %} checked {% endif %} /></center>
+            </td>
+            <td>
+              <center><input type="checkbox" name="filter_textureCompressionETC2" {% if f_textureCompressionETC2 %} checked {% endif %} /></center>
+            </td>
+            <td>
+              <center><input type="checkbox" name="filter_vertexPipelineStoresAndAtomics" {% if f_vertexPipelineStoresAndAtomics %} checked {% endif %} /></center>
+            </td>
+          </tr>
+          {% for mygpu in gpu_array %}
+          <tr>
+            <td>
+
+            </td>
+            <td>
+              <a href="/edit?name={{ mygpu.key.id() }}">{{ mygpu.key.id() }}</a>
+            </td>
+            <td> {{ mygpu.manufacturer }} </td>
+            <td> {{ mygpu.dateIssued }} </td>
+            <td> {{ mygpu.geometryShader}} </td>
+            <td> {{ mygpu.tesselationShader }} </td>
+            <td> {{ mygpu.shaderInt16 }} </td>
+            <td> {{ mygpu.sparseBinding }} </td>
+            <td> {{ mygpu.textureCompressionETC2 }} </td>
+            <td> {{ mygpu.vertexPipelineStoresAndAtomics }} </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+
+
+</body>

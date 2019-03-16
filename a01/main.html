@@ -1,0 +1,104 @@
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <title>GPU Web Application</title>
+  <style type="text/css">
+    .button {
+      background-color: purple;
+      border: none;
+      color: white;
+      padding: 15px 32px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      font-family: verdana;
+
+      div {
+        align: center;
+        height: 400px;
+        width: 300px;
+        background-color: lightgrey;
+        border: 25px solid green;
+        padding: 25px;
+        margin: 25px;
+      }
+
+      table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+      }
+
+      thead {
+        background: #737373;
+        color: #fff;
+      }
+
+      td,
+      th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 6px;
+      }
+
+      tr:hover:nth-child(even) {
+        background-color: #EEEEEE;
+      }
+
+      body {
+        font-family: "Times New Roman", Times, serif;
+      }
+
+      a:visited {
+        color: blue;
+      }
+
+      a:hover {
+        color: green;
+      }
+  </style>
+</head>
+
+<body>
+  <h1 style="text-align:center;font-family:Times New Roman" ;> GPU Application with Vulkan features</h1>
+  <h3 style="text-align:right;"> Please {{ url_string }} <a href='{{ url }}'>here</a></h3>
+  {% if user %}
+  <h3 style="text-align:center;"> ENTER YOUR GPU DETAILS.</h3>
+  <div>
+    <form method="post" action="/">
+      <h4> Enter GPU Name: <input type="text" name="name" placeholder="Example: GPU" required="True"> </h4>
+      <h4> Enter Manufacturer's Name: <input type="text" name="manu" placeholder="Example: AMD" required="True" /> </h4>
+      <h4> Select Date Issued <input type="date" name="date_issued" required="True" /> </h4>
+      <h4> Select features of GPU:
+        <ul>
+          <li><input type="checkbox" name="geometryShader" />Geometry Shader</br></li>
+          <li><input type="checkbox" name="tesselationShader" />Tesselation Shader</br></li>
+          <li><input type="checkbox" name="shaderInt16" />Shader Int16</br></li>
+          <li><input type="checkbox" name="sparseBinding" />Sparse Binding</br></li>
+          <li><input type="checkbox" name="textureCompressionETC2" />Texture Compression ETC2</br></li>
+          <li><input type="checkbox" name="vertexPipelineStoresAndAtomics" />Vertex Pipeline Stores And Atomics</br></br></li>
+        </ul>
+        <button class="button" type="Submit" autofocus>Submit</button>
+    </form>
+  </div>
+  <br>
+  <p style="font-family:courier;">
+    Click <a href="/CompareGPU">here</a> to compare.
+
+  </p>
+  <p style="font-family:courier;" align="right">
+    Click <a href="/GPUList">here</a> to access the GPU List.
+
+  </p>
+  {% else %}
+  <h2 style="text-align:center;"> Hello, Welcome to the application. </h2>
+  {% endif %}
+  <br>
+
+
+
+</body>
+
+</html>
